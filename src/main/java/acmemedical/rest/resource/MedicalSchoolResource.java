@@ -58,7 +58,6 @@ public class MedicalSchoolResource {
     }
     
     @GET
-    @RolesAllowed({ADMIN_ROLE})
     @Path("/{medicalSchoolId}")
     public Response getMedicalSchoolById(@PathParam("medicalSchoolId") int medicalSchoolId) {
         LOG.debug("Retrieving medical school with id = {}", medicalSchoolId);
