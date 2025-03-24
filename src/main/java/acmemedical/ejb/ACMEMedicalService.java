@@ -334,6 +334,13 @@ public class ACMEMedicalService implements Serializable {
     
     @Transactional
     public Prescription persistPrescription(Prescription newPrescription) {
+        Physician physician = em.find(Physician.class, newPrescription.getPhysician().getId());
+        Patient patient = em.find(Patient.class, newPrescription.getPatient().getId());
+        Medicine medicine = em.find(Medicine.class, newPrescription.getMedicine().getId());
+        newPrescription.setPhysician(physician);
+        newPrescription.setPatient(patient);
+        newPrescription.setMedicine(medicine);
+        
         em.persist(newPrescription);
         return newPrescription;
     }
