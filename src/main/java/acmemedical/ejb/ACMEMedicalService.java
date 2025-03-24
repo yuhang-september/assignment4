@@ -391,6 +391,16 @@ public class ACMEMedicalService implements Serializable {
     	MedicalTraining training = getById(MedicalTraining.class, MedicalTraining.FIND_BY_ID, id);
         if (training != null) {
             em.refresh(training);
+            if (training.getCertificate() != null) {
+                MedicalCertificate certificate = training.getCertificate();
+                certificate.setMedicalTraining(null);
+                em.merge(certificate);
+            }
+            if (training.getMedicalSchool() != null) {
+                MedicalSchool school = training.getMedicalSchool();
+                school.getMedicalTrainings().remove(training);
+                em.merge(school);
+            }
             em.remove(training);
         }
     }

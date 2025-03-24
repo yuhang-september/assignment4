@@ -42,11 +42,11 @@ public class MedicalTraining extends PojoBase implements Serializable {
 	
 	public static final String FIND_BY_ID = "MedicalTraining.findById";
 	
-	@ManyToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "school_id", referencedColumnName = "school_id", nullable = false)
 	private MedicalSchool medicalSchool;
 
-	@OneToOne(mappedBy = "medicalTraining", cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
+	@OneToOne(mappedBy = "medicalTraining", fetch = FetchType.LAZY)
 	private MedicalCertificate certificate;
 
 	@Embedded

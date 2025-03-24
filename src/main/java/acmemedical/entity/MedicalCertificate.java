@@ -31,7 +31,7 @@ import jakarta.persistence.AttributeOverrides;
 @Entity
 @Table(name = "medical_certificate")
 @NamedQueries({
-	@NamedQuery(name = MedicalCertificate.ID_CARD_QUERY_NAME, query = "SELECT mc FROM MedicalCertificate mc WHERE mc.id = :certificate_id"),
+	@NamedQuery(name = MedicalCertificate.ID_CARD_QUERY_NAME, query = "SELECT mc FROM MedicalCertificate mc WHERE mc.id = :param1"),
 	@NamedQuery(name = "MedicalCertificate.findAll", query = "SELECT mc FROM MedicalCertificate mc")
 })
 
